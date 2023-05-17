@@ -28,7 +28,7 @@ jobs:
             fi
             cd executor/
             git checkout videoEnabled
-            printf $MUUKTEST_KEY > key.pub
+            printf ${{ vars.MUUKTEST_KEY }} > key.pub
             cat key.pub
             chmod 755 gradlew
             chmod 755 key.pub
@@ -39,7 +39,7 @@ jobs:
       - name: Execute test
         run: |
             cd executor/
-            python3.7  mkcli.py -p $PROPERTY -t $TAG -browser chrome
+            python3.7  mkcli.py -p ${{ vars.PROPERTY }} -t ${{ vars.TAG }} -browser chrome
 
 
       - name: Print test results
